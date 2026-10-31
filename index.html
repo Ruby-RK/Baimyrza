@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Baimyrza Technologies | 3D Configurator</title>
+    <title>NUR Technologies | Mobile Optimized 3D</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. ОКНО ЛОГИНА (Логин: 1 / Пароль: 1) -->
+    <!-- 1. ОКНО ЛОГИНА -->
     <div id="login-screen" class="modal-overlay">
         <div class="modal-box">
-            <h2>🏢 BAIMYRZA BUILD</h2>
-            <p>Введите учетные данные для доступа к системе</p>
+            <h2>🏢 NUR BUILD</h2>
+            <p>Мобильная система авторизации</p>
             <input type="text" id="login-input" placeholder="Логин (введите 1)" value="1">
             <input type="password" id="pass-input" placeholder="Пароль (введите 1)" value="1">
             <button onclick="checkLogin()" class="btn-primary">Войти в систему</button>
@@ -20,11 +20,11 @@
         </div>
     </div>
 
-    <!-- 2. ГЛАВНОЕ МЕНЮ BAIMYRZA -->
+    <!-- 2. ГЛАВНОЕ МЕНЮ NUR -->
     <div id="main-menu" style="display: none;">
         <header class="header">
             <div class="logo">
-                <h1>Baimyrza <span>Technologies</span></h1>
+                <h1>NUR <span>Technologies</span></h1>
             </div>
             <div class="lang-switch">
                 <button onclick="setLanguage('ru')" id="lang-ru" class="lang-btn active">РУС</button>
@@ -35,28 +35,26 @@
 
         <main class="hero-section">
             <div class="hero-content">
-                <span class="badge-tag" id="t-badge">Инновации в строительстве КЗ</span>
-                <h2 id="t-title">Строительство и ремонт нового поколения</h2>
+                <span class="badge-tag" id="t-badge">МОБИЛЬНАЯ AI ПЛАТФОРМА</span>
+                <h2 id="t-title">Дизайн и ремонт в вашем смартфоне</h2>
                 <p id="t-desc">
-                    <strong>Baimyrza</strong> — это передовая платформа цифрового моделирования. 
-                    Зачем нужен этот сайт? Он полностью убирает споры на стройке, подсчитывает материалы и кабели в реальном тенге, 
-                    а клиент сам кастомизирует проект в 3D режиме с телефона или ПК!
+                    <strong>NUR</strong> оптимизирован под любые телефоны и планшеты. Управляйте проектом, меняйте квадратуру и генерируйте смету в реальном времени прямо на ходу!
                 </p>
-                <button onclick="openConfigurator()" class="btn-start" id="t-btn-start">🚀 Открыть 3D Конфигуратор комнат</button>
+                <button onclick="openConfigurator()" class="btn-start" id="t-btn-start">🚀 Запустить 3D Конфигуратор</button>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>⚡ 360° Конфигуратор</h3>
-                    <p id="t-f1">Полная кастомизация стен, пола, дверей и электрики в реальном времени.</p>
+                    <h3>📱 Mobile-First</h3>
+                    <p id="t-f1">Плавная работа 3D-сцены без лагов на любых гаджетах.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 AI-Архитектор</h3>
+                    <p id="t-f2">Генерация планировок с помощью текстового ввода.</p>
                 </div>
                 <div class="feature-card">
                     <h3>📊 BIM-Смета</h3>
-                    <p id="t-f2">Автоматический расчет материалов, кабелей и сантехники для прораба.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🤝 Надежность</h3>
-                    <p id="t-f3">Прозрачные расчеты и точное соответствие ожиданиям клиента.</p>
+                    <p id="t-f3">Мгновенный расчет в тенге под вашим пальцем.</p>
                 </div>
             </div>
         </main>
@@ -64,38 +62,66 @@
 
     <!-- 3. 3D КОНФИГУРАТОР -->
     <div id="configurator-screen">
+        <!-- Кнопка сворачивания/разворачивания панели на мобилках -->
+        <button id="mobile-toggle-btn" onclick="toggleMobilePanel()">⚙️ Меню и Смета</button>
+
         <div id="ui-panel">
-            <button onclick="backToMenu()" class="btn-back">⬅️ Назад в Меню Baimyrza</button>
+            <button onclick="backToMenu()" class="btn-back">⬅️ Главное Меню NUR</button>
             <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h2 style="margin:0; font-size:16px; color:#fff;">PORSCHE BUILD 3D</h2>
-                <span style="background:#ffb703; color:#000; font-weight:bold; font-size:9px; padding:2px 5px; border-radius:4px;">PRO BIM</span>
+                <h2 style="margin:0; font-size:15px; color:#fff;">NUR MOBILE 3D</h2>
+                <span style="background:#ffb703; color:#000; font-weight:bold; font-size:9px; padding:2px 5px; border-radius:4px;">TOUCH READY</span>
             </div>
 
-            <div class="section" style="margin-top:8px;">
-                <h3>0. Проект и Планировка</h3>
-                <button onclick="switchBuilding('1room')" id="btn-b-1room" class="cfg-btn active">1-Комн + С/У</button>
-                <button onclick="switchBuilding('2room')" id="btn-b-2room" class="cfg-btn">2-Комн Евро</button>
-                <button onclick="switchBuilding('house')" id="btn-b-house" class="cfg-btn">🏡 Коттедж</button>
+            <!-- AI-ЧАТ -->
+            <div class="section ai-box">
+                <h3>🤖 AI-Архитектор</h3>
+                <textarea id="ai-prompt" placeholder="Опишите ремонт (например: 40м2 лофт, паркет, темные стены)..."></textarea>
+                <button onclick="processAiPrompt()" class="btn-ai-generate">✨ Сгенерировать в 3D</button>
+            </div>
+
+            <!-- ПЛОЩАДЬ -->
+            <div class="section">
+                <h3>📐 Площадь и Габариты (м²)</h3>
+                <div class="input-row">
+                    <label>Площадь (м²):</label>
+                    <input type="number" id="area-input" value="45" min="15" max="250" onchange="updateAreaFromInput(this.value)">
+                </div>
+                <div class="input-row">
+                    <label>Ширина: <span id="val-w">6</span>м</label>
+                    <input type="range" id="slider-w" min="3" max="12" step="0.5" value="6" oninput="updateDimensions()">
+                </div>
+                <div class="input-row">
+                    <label>Длина: <span id="val-l">7.5</span>м</label>
+                    <input type="range" id="slider-l" min="3" max="15" step="0.5" value="7.5" oninput="updateDimensions()">
+                </div>
+            </div>
+
+            <!-- ПЛАНИРОВКА -->
+            <div class="section">
+                <h3>🧱 Перегородки</h3>
+                <button onclick="togglePartition('studio')" id="btn-p-studio" class="cfg-btn active">Студия</button>
+                <button onclick="togglePartition('1wall')" id="btn-p-1wall" class="cfg-btn">+ 1 Стена</button>
+                <button onclick="togglePartition('bath_zone')" id="btn-p-bath" class="cfg-btn">+ Санузел</button>
             </div>
 
             <div class="section">
                 <h3>1. Освещение</h3>
                 <button onclick="setLighting('day')" id="btn-day" class="cfg-btn active">☀️ День</button>
-                <button onclick="setLighting('night')" id="btn-night" class="cfg-btn">🌙 Вечер + LED</button>
+                <button onclick="setLighting('night')" id="btn-night" class="cfg-btn">🌙 Вечер</button>
             </div>
 
             <div class="section">
-                <h3>2. Цвет Стен и Пол</h3>
+                <h3>2. Отделка</h3>
                 <input type="color" id="wallColor" value="#f0ede6" onchange="changeWallColor(this.value)" style="border:none; width:100%; height:28px; cursor:pointer;">
                 <div style="margin-top:5px;">
-                    <button onclick="setFloor('laminate')" class="cfg-btn active">Ламинат</button>
-                    <button onclick="setFloor('tile')" class="cfg-btn">Керамогранит</button>
-                    <button onclick="setFloor('parquet')" class="cfg-btn">Паркет</button>
+                    <button onclick="setFloor('laminate')" id="btn-fl-laminate" class="cfg-btn active">Ламинат</button>
+                    <button onclick="setFloor('tile')" id="btn-fl-tile" class="cfg-btn">Кафель</button>
+                    <button onclick="setFloor('parquet')" id="btn-fl-parquet" class="cfg-btn">Паркет</button>
                 </div>
             </div>
 
             <div class="section">
-                <h3>3. Двери и Сантехника</h3>
+                <h3>3. Элементы</h3>
                 <button onclick="addArchElement('door')" class="cfg-btn btn-action">🚪 Дверь (95 000 ₸)</button>
                 <button onclick="addArchElement('toilet')" class="cfg-btn btn-action">🚽 Унитаз (130 000 ₸)</button>
                 <button onclick="addArchElement('sink')" class="cfg-btn btn-action">🚰 Раковина (85 000 ₸)</button>
@@ -103,29 +129,29 @@
             </div>
 
             <div class="section">
-                <h3>4. Управление и Электрика</h3>
-                <button onclick="setInteractionMode('move')" id="btn-move" class="cfg-btn btn-action">🖐️ Передвижение предметов</button>
+                <h3>4. Управление</h3>
+                <button onclick="setInteractionMode('move')" id="btn-move" class="cfg-btn btn-action">🖐️ Передвижение</button>
                 <button onclick="setInteractionMode('socket')" id="btn-socket" class="cfg-btn btn-action active">🔌 Розетка (5 000 ₸)</button>
                 <button onclick="setInteractionMode('switch')" id="btn-switch" class="cfg-btn btn-action">💡 Выключатель (4 000 ₸)</button>
-                <button onclick="setInteractionMode('delete')" id="btn-del" class="cfg-btn btn-danger">🗑️ Удалить предмет</button>
+                <button onclick="setInteractionMode('delete')" id="btn-del" class="cfg-btn btn-danger">🗑️ Удалить</button>
             </div>
 
             <div class="section">
-                <button onclick="generateReport()" class="cfg-btn btn-success">📑 Скачать BIM-Смету</button>
+                <button onclick="generateReport()" class="cfg-btn btn-success">📑 Скачать Смету</button>
             </div>
 
             <div class="price-box">
-                Итого смета:<br>
+                Смета (<span id="area-display">45</span> м²):<br>
                 <span id="total-price">0</span> ₸
             </div>
         </div>
 
-        <div id="instruction">🔄 Вращай 360°! Выбери «🖐️ Передвижение», чтобы свободно тащить предметы по полу.</div>
+        <div id="instruction">👆 Палец по экрану — вращение 360°. Выберите «Передвижение», чтобы тащить мебель!</div>
         <button onclick="backToMenu()" class="btn-top-back">⬅️ Меню</button>
         <div id="canvas-container"></div>
     </div>
 
-    <!-- THREE.JS И НАШ JS ФАЙЛ -->
+    <!-- THREE.JS И СКРИПТ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
